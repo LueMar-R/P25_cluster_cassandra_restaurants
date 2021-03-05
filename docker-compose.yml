@@ -1,0 +1,43 @@
+version: '2.2' 
+networks:
+  cassandra:
+services:
+  cass1:
+    image: cassandra:3.11.10   # better to use a specific version, if you want to control upgrades
+    container_name: cass1
+    hostname: cass1
+    networks:
+      - cassandra
+    ports:
+      - 7000:7000
+      - 9042:9042
+    volumes:
+      - cass1:/var/lib/cassandra    # This is the volume that will persist data for cass1 node
+    environment: &environment    # Declare and save environments variables into "environment"
+      - CASSANDRA_SEEDS=cass1,cass22
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=cassandra
+      # By default, Cassandra autodetects the available host memory and takes as much as it can.
+      # Therefore, memory options are mandatory if multiple Cassandras are launched in the same node.
+      - MAX_HEAP_SIZE=2G
+      - HEAP_NEWSIZE=200M
+
+  cass2:
+    image: cassandra:3.11.10
+    container_name: cass2
+    hostname: cass2
+    networks:
+      - cassandra
+    ports:
+      - 7001:7000
+      - "9043:9042"
+    volumes:
+      - cass2:/var/lib/cassandra 
+    environment: *environment    # point to "environment" to use the same environment variables as cass1
+
+volumes:
+  cass1:
+    driver: local
+  cass2:
+    driver: local
