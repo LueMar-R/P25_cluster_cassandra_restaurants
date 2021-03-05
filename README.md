@@ -64,7 +64,25 @@ _dans notre cas_<br>
 
 ```cql
 use resto ;
-COPY Restaurant (id, name, borough, buildingnum, street, zipcode, phone, cuisinetype) FROM '/restaurants.csv' WITH DELIMITER=',';
-COPY Inspection (idrestaurant, inspectiondate, violationcode, violationdescription, criticalflag, score, grade) FROM '/restaurants_inspections.csv' WITH DELIMITER=',';
+COPY Restaurant (id, name, borough, buildingnum, street, zipcode, phone, cuisinetype) 
+        FROM '/restaurants.csv' 
+        WITH DELIMITER=',';
+COPY Inspection (idrestaurant, inspectiondate, violationcode, violationdescription, criticalflag, score, grade) 
+        FROM '/restaurants_inspections.csv' 
+        WITH DELIMITER=',';
 ```
 
+Lorsque l'importation est terminée, on peut vérifier le nombre de lignes importées avec la commande `count`
+![count](queryok.png)
+
+## API
+
+
+
+_Enfin, coder une petite API qui propose 4 url pour accéder :_
+- aux infos d'un restaurant à partir de son id,
+- à la liste des noms de restaurants à partir du type de cuisine,
+- au nombre d'inspection d'un restaurant à partir de son id restaurant,
+- les noms des 10 premiers restaurants d'un grade donné.
+
+_Et en bonus, intégrer l'API dans le docker-compose._
