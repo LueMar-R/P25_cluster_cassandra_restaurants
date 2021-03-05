@@ -14,4 +14,7 @@ vérifier le statut de la stack :<br>
 
 ### Démarrage du CQL sur cass1
 
+`docker start cass1`<br>
+`docker start cass2`
+
 `docker exec -it cass1 cqlsh  -e "describe keyspaces"`
