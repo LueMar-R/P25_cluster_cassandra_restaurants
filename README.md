@@ -2,7 +2,7 @@
 
 
 
-### Création du Docker-Compose
+## Création du Docker-Compose
 
 Voir le contenu du docker compose dans [docker-compose.yml](docker-compose.yml)
 
@@ -18,18 +18,24 @@ pour monitorer l'état des clusters :<br>
 et vérifier que CQL fonctionne sur le cluster :<br>
 `docker exec -it cass1 cqlsh  -e "describe keyspaces"`
 
-### Création de la base de données
+## Création de la base de données
 
-démarrer le shell cqlsh : 
-`docker exec -it cass1 cqlsh`
+démarrer le shell cqlsh : <br>
+```cql
+docker exec -it cass1 cqlsh
+```
 
 Création de la base de données:<br>
-`CREATE KEYSPACE IF NOT EXISTS resto_NY WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1};`
+```cql
+CREATE KEYSPACE IF NOT EXISTS resto_NY WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1};
+```
 
-Sélectionner cette base :
-`USE resto;`
+Sélectionner cette base :<br>
+```cql
+USE resto;
+```
 
-Création des tables :
+Création des tables :<br>
 ```cql
  CREATE TABLE Restaurant (
    id INT, Name VARCHAR, borough VARCHAR, BuildingNum VARCHAR, Street VARCHAR,
@@ -45,9 +51,8 @@ Création des tables :
  ```
  
  Création des index :
-``cql
+```cql
 CREATE INDEX TypeResto ON Restaurant ( CuisineType ) ;
-
 CREATE INDEX GradeInspec ON Inspection ( Grade ) ;
 ```
 
