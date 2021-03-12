@@ -21,18 +21,16 @@ et vérifier que CQL fonctionne sur le cluster :<br>
 ## Création de la base de données
 
 démarrer le shell cqlsh : <br>
-```cql
-docker exec -it cass1 cqlsh
-```
+`docker exec -it cass1 cqlsh
 
 Création de la base de données:<br>
 ```cql
-CREATE KEYSPACE IF NOT EXISTS resto_NY WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1};
+ CREATE KEYSPACE IF NOT EXISTS resto_NY WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1};
 ```
 
 Sélectionner cette base :<br>
 ```cql
-USE resto;
+ USE resto;
 ```
 
 Création des tables :<br>
