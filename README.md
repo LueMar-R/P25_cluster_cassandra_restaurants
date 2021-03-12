@@ -95,7 +95,7 @@ La structure de dossiers est la suivante :<br>
 _Contenu du Dockerfile :_ (voir la documentation [fastapi-docker](https://fastapi.tiangolo.com/deployment/docker))
 ```bash
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
-RUN pip install fastapi uvicorn
+RUN pip install fastapi uvicorn cassandra-driver
 COPY ./app /api
 ```
 
