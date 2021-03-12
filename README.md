@@ -84,11 +84,13 @@ Nous avons créé une API pour accéder :
 Dans le dossier où sont stockés les fichiers de l'API (api.py et connexion.py), nous créons un Dockerfile afin de créer une image de notre API dans Docker.
 La structure de dossiers est la suivante :<br>
 
-`.
+```bash
+.
 ├── app
 │   └── api.py
 │   └── connexion.py
-└── Dockerfile`
+└── Dockerfile
+```
 
 _Contenu du Dockerfile :_ (voir la documentation [fastapi-docker](https://fastapi.tiangolo.com/deployment/docker))
 ```bash
