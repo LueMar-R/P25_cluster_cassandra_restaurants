@@ -103,7 +103,7 @@ La construction de l'image se lance ensuite dans le shell avec la commande suian
 `docker build -t resto_img .`
 
 Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra :<br>
-`docker run -d --name api_cont -p 80:80 --network P25_restaurants_cassandra_cassandra resto_img`
+`docker run -d --name api_cont -p 80:80 --network p25_restaurants_cassandra_cassandra resto_img`
 
 
 
