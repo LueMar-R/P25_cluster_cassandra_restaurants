@@ -25,7 +25,7 @@ démarrer le shell cqlsh : <br>
 
 Création de la base de données:<br>
 ```cql
- CREATE KEYSPACE IF NOT EXISTS resto_NY WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1} ;
+ CREATE KEYSPACE IF NOT EXISTS resto WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1} ;
 ```
 
 Sélectionner cette base :<br>
