@@ -84,7 +84,7 @@ Nous avons créé une API pour accéder :
 - les noms des 10 premiers restaurants d'un grade donné.
 
 Dans le dossier où sont stockés les fichiers de l'API (api.py et connexion.py), nous créons un Dockerfile afin de créer une image de notre API dans Docker.
-La structure de dossiers est la suivante :
+La structure de dossiers est la suivante :<br>
 
 `.
 ├── app
@@ -99,10 +99,10 @@ RUN pip install fastapi uvicorn
 COPY ./app /api
 ```
 
-La construction de l'image se lance ensuite dans le shell avec la commande suiante :
+La construction de l'image se lance ensuite dans le shell avec la commande suiante :<br>
 `docker build -t resto_img .`
 
-Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra (ici `cassandra-cassandra`) :
+Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra (ici `cassandra-cassandra`) :<br>
 `docker run -d --name api_cont -p 80:80 --network=cassandra_cassandra resto_img`
 
 
