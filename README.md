@@ -77,12 +77,42 @@ Lorsque l'importation est terminée, on peut vérifier le nombre de lignes impor
 
 ## API
 
-
-
-_Enfin, coder une petite API qui propose 4 url pour accéder :_
+Nous avons créé une API pour accéder :
 - aux infos d'un restaurant à partir de son id,
 - à la liste des noms de restaurants à partir du type de cuisine,
 - au nombre d'inspection d'un restaurant à partir de son id restaurant,
 - les noms des 10 premiers restaurants d'un grade donné.
 
-_Et en bonus, intégrer l'API dans le docker-compose._
+Dans le dossier où sont stockés les fichiers de l'API (api.py et connexion.py), nous créons un Dockerfile afin de créer une image de notre API dans Docker.
+La structure de dossiers est la suivante :
+```bash
+.
+├── app
+│   └── api.py
+│   └── connexion.py
+└── Dockerfile
+```
+
+_Contenu du Dockerfile :_ (voir la documentation [fastapi-docker](https://fastapi.tiangolo.com/deployment/docker))
+```bash
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+RUN pip install fastapi uvicorn
+COPY ./app /api
+```
+
+La construction de l'image se lance ensuite dans le shell avec la commande suiante :
+```bash
+docker build -t resto_img .
+```
+
+Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra (ici `cassandra-cassandra`) :
+```bash
+docker run -d --name api_cont -p 80:80 --network=cassandra_cassandra resto_img
+```
+
+
+
+
+
+
+
