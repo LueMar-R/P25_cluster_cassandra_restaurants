@@ -57,8 +57,8 @@ CREATE INDEX GradeInspec ON Inspection ( Grade ) ;
 Copier les fichiers dans le conteneur à partir de docker :<br>
 `docker cp :/<PATH-TO-CSV> <CONTAINER-ID>:/`
 _dans notre cas_<br>
-`docker cp :/mnt/c/ubu/cassandra/restaurants.csv a3a6aee998df:/`<br>
-`docker cp :/mnt/c/ubu/cassandra/restaurants_inspections.csv a3a6aee998df:/`<br>
+`docker cp :restaurants.csv 3cdf4a70e9a0:/`<br>
+`docker cp :restaurants_inspections.csv 3cdf4a70e9a0:/`<br>
 
 ```cql
 use resto ;
