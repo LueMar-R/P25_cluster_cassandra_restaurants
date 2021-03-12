@@ -96,14 +96,14 @@ _Contenu du Dockerfile :_ (voir la documentation [fastapi-docker](https://fastap
 ```bash
 FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
 RUN pip install fastapi uvicorn cassandra-driver
-COPY ./app /api
+COPY ./app /app
 ```
 
 La construction de l'image se lance ensuite dans le shell avec la commande suiante :<br>
 `docker build -t resto_img .`
 
-Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra (ici `cassandra-cassandra`) :<br>
-`docker run -d --name api_cont -p 80:80 --network=cassandra_cassandra resto_img`
+Puis on contruit le container de l'API à partir de cette image, en connectant manuellement le container de l'API au network de nos containers cassandra :<br>
+`docker run -d --name api_cont -p 80:80 --network P25_restaurants_cassandra_cassandra resto_img`
 
 
 
